@@ -9,7 +9,7 @@ export interface IReadinessScoreHistory extends Document {
 
 const readinessScoreSchema = new Schema<IReadinessScoreHistory>(
   {
-    userId: { type: Schema.Types.ObjectId, ref: "User", required: true, index: true },
+    userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
     score: { type: Number, required: true, min: 0, max: 100 },
     components: { type: Schema.Types.Mixed, default: {} },
     calculatedAt: { type: Date, default: Date.now, index: true },

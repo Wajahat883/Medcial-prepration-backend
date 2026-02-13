@@ -12,7 +12,7 @@ export interface ISessionToken extends Document {
 
 const sessionTokenSchema = new Schema<ISessionToken>(
   {
-    tokenId: { type: String, required: true, index: true, unique: true },
+    tokenId: { type: String, required: true, unique: true },
     userId: { type: Schema.Types.ObjectId, ref: "User", required: true, index: true },
     sessionId: { type: Schema.Types.ObjectId, ref: "Session", default: null },
     questionId: { type: Schema.Types.ObjectId, ref: "Question", default: null },

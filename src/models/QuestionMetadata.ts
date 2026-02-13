@@ -11,9 +11,9 @@ export interface IQuestionMetadata extends Document {
 
 const questionMetadataSchema = new Schema<IQuestionMetadata>(
   {
-    questionId: { type: Schema.Types.ObjectId, ref: "Question", required: true, unique: true, index: true },
+    questionId: { type: Schema.Types.ObjectId, ref: "Question", required: true, unique: true },
     difficultyLevel: { type: String, enum: ["easy", "medium", "hard"], default: "medium", index: true },
-    recallFrequency: { type: Number, default: 0, index: true },
+    recallFrequency: { type: Number, default: 0 },
     examinerFavored: { type: Boolean, default: false, index: true },
     lastReviewedAt: { type: Date, default: null },
     retirementStatus: { type: Boolean, default: false, index: true },

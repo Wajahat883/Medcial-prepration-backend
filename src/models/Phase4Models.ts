@@ -22,7 +22,7 @@ export interface IExam extends Document {
 
 const ExamSchema = new Schema<IExam>(
   {
-    examId: { type: String, required: true, unique: true, index: true },
+    examId: { type: String, required: true, unique: true },
     displayName: { type: String, required: true },
     description: String,
     passScore: { type: Number, required: true },
@@ -54,7 +54,7 @@ export interface IUserExamSelection extends Document {
 
 const UserExamSelectionSchema = new Schema<IUserExamSelection>(
   {
-    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true },
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     examId: { type: Schema.Types.ObjectId, ref: 'Exam', required: true },
     targetExamDate: Date,
     selectedAt: { type: Date, default: Date.now },
@@ -137,7 +137,7 @@ export interface IUserUXPreferences extends Document {
 
 const UserUXPreferencesSchema = new Schema<IUserUXPreferences>(
   {
-    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true, unique: true, index: true },
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true, unique: true },
     noiseReductionEnabled: { type: Boolean, default: false },
     autoCollapseStems: { type: Boolean, default: false },
     highlightVitalsAndLabs: { type: Boolean, default: true },
@@ -182,7 +182,7 @@ export interface IUserWellness extends Document {
 
 const UserWellnessSchema = new Schema<IUserWellness>(
   {
-    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true, unique: true, index: true },
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true, unique: true },
     lastSevenDaysAccuracy: [Number],
     lastSevenDaysSessionDuration: [Number],
     lastSevenDaysSessionFrequency: { type: Number, default: 0 },
@@ -229,7 +229,7 @@ export interface IPiracyViolation extends Document {
 
 const PiracyViolationSchema = new Schema<IPiracyViolation>(
   {
-    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true },
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     violationType: {
       type: String,
       enum: ['copy', 'paste', 'screenshot', 'context-menu', 'suspicious-access'],

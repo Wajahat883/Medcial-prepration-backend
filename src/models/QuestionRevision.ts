@@ -13,7 +13,7 @@ export interface IQuestionRevision extends Document {
 const questionRevisionSchema = new Schema<IQuestionRevision>(
   {
     revisionId: { type: String, required: true, index: true },
-    questionId: { type: Schema.Types.ObjectId, ref: "Question", required: true, index: true },
+    questionId: { type: Schema.Types.ObjectId, ref: "Question", required: true },
     content: { type: String, required: true },
     status: { type: String, enum: ["draft", "peer_review", "senior_review", "editor_review", "published", "archived"], default: "draft", index: true },
     createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true, index: true },
