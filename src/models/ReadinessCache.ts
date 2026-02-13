@@ -9,7 +9,7 @@ export interface IReadinessCache extends Document {
 
 const readinessCacheSchema = new Schema<IReadinessCache>(
   {
-    userId: { type: Schema.Types.ObjectId, ref: "User", required: true, unique: true, index: true },
+    userId: { type: Schema.Types.ObjectId, ref: "User", required: true, unique: true },
     score: { type: Number, required: true, min: 0, max: 100 },
     components: { type: Schema.Types.Mixed, default: {} },
     updatedAt: { type: Date, default: Date.now },

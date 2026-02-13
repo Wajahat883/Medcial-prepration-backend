@@ -14,8 +14,8 @@ export interface IStudentPerformanceDetail extends Document {
 
 const studentPerformanceSchema = new Schema<IStudentPerformanceDetail>(
   {
-    userId: { type: Schema.Types.ObjectId, ref: "User", required: true, index: true },
-    questionId: { type: Schema.Types.ObjectId, ref: "Question", required: true, index: true },
+    userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    questionId: { type: Schema.Types.ObjectId, ref: "Question", required: true },
     sessionId: { type: Schema.Types.ObjectId, ref: "TestSession", default: null },
     timeTaken: { type: Number, required: true },
     confidenceLevel: { type: Number, min: 0, max: 100, default: null },
