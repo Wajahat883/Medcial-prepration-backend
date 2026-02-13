@@ -32,6 +32,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
+// Trust proxy for Railway/Vercel (required for rate limiting behind reverse proxy)
+app.set('trust proxy', 1);
+
 // Connect to MongoDB
 connectDB();
 
@@ -78,9 +81,11 @@ app.use(cors({
   origin: (origin, callback) => {
     const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:3000').split(',');
     // Allow requests with no origin (mobile apps, curl, etc.)
-    if (!origin || allowedOrigins.includes(origin)) {
+    // Also allow any vercel.app domain for preview deployments
+    if (!origin || allowedOrigins.includes(origin) || (origin && origin.includes('vercel.app'))) {
       callback(null, true);
     } else {
+      console.log('CORS blocked origin:', origin, 'Allowed:', allowedOrigins);
       callback(new Error('Not allowed by CORS'));
     }
   },
