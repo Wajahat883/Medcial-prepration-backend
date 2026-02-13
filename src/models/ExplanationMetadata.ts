@@ -16,6 +16,4 @@ const explanationMetadataSchema = new Schema<IExplanationMetadata>(
   { timestamps: true },
 );
 
-explanationMetadataSchema.index({ questionId: 1 });
-
 export const ExplanationMetadata = mongoose.model<IExplanationMetadata>("ExplanationMetadata", explanationMetadataSchema);

@@ -21,6 +21,4 @@ const userCognitiveProfileSchema = new Schema<IUserCognitiveProfile>(
   { timestamps: true },
 );
 
-userCognitiveProfileSchema.index({ userId: 1 });
-
 export const UserCognitiveProfile = mongoose.model<IUserCognitiveProfile>("UserCognitiveProfile", userCognitiveProfileSchema);

@@ -12,7 +12,7 @@ export interface IQuestionContentGovernance extends Document {
 
 const questionContentGovernanceSchema = new Schema<IQuestionContentGovernance>(
   {
-    questionId: { type: Schema.Types.ObjectId, ref: "Question", required: true, index: true, unique: true },
+    questionId: { type: Schema.Types.ObjectId, ref: "Question", required: true, unique: true },
     currentStatus: { type: String, enum: ["draft","peer_review","senior_review","editor_review","published","archived"], default: "draft", index: true },
     workflowStage: { type: String, default: "draft" },
     assignedTo: { type: Schema.Types.ObjectId, ref: "User", default: null },
@@ -22,7 +22,5 @@ const questionContentGovernanceSchema = new Schema<IQuestionContentGovernance>(
   },
   { timestamps: true },
 );
-
-questionContentGovernanceSchema.index({ questionId: 1 });
 
 export const QuestionContentGovernance = mongoose.model<IQuestionContentGovernance>("QuestionContentGovernance", questionContentGovernanceSchema);
