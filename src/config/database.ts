@@ -14,8 +14,8 @@ const mongooseOptions: mongoose.ConnectOptions = {
  */
 export const connectDB = async (): Promise<void> => {
   try {
-    // Check multiple env vars for MongoDB connection (Railway uses MONGO_PUBLIC_URL)
-    const mongoUri = process.env.MONGODB_URI || process.env.MONGO_PUBLIC_URL || process.env.MONGO_URL || 'mongodb://mongodb:27017/medical-exam-prep';
+    // Check multiple env vars - prefer MONGO_URL (private/internal) to avoid egress fees
+    const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URL || process.env.MONGO_PUBLIC_URL || 'mongodb://mongodb:27017/medical-exam-prep';
     const conn = await mongoose.connect(mongoUri, mongooseOptions);
     
     console.log(`MongoDB Connected: ${conn.connection.host}:${conn.connection.port}/${conn.connection.name}`);
