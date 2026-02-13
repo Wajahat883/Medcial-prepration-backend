@@ -16,7 +16,7 @@ const sessionTokenSchema = new Schema<ISessionToken>(
     userId: { type: Schema.Types.ObjectId, ref: "User", required: true, index: true },
     sessionId: { type: Schema.Types.ObjectId, ref: "Session", default: null },
     questionId: { type: Schema.Types.ObjectId, ref: "Question", default: null },
-    expiresAt: { type: Date, required: true, index: true },
+    expiresAt: { type: Date, required: true },
     usedCount: { type: Number, default: 0 },
   },
   { timestamps: { createdAt: true, updatedAt: false } },

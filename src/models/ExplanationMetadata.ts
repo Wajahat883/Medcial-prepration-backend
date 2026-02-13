@@ -9,7 +9,7 @@ export interface IExplanationMetadata extends Document {
 
 const explanationMetadataSchema = new Schema<IExplanationMetadata>(
   {
-    questionId: { type: Schema.Types.ObjectId, ref: "Question", required: true, index: true, unique: true },
+    questionId: { type: Schema.Types.ObjectId, ref: "Question", required: true, unique: true },
     structure: { type: Schema.Types.Mixed, required: true },
     visualAids: { type: Schema.Types.Mixed, default: null },
   },

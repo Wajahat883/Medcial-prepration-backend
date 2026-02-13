@@ -11,7 +11,7 @@ export interface IUserCognitiveProfile extends Document {
 
 const userCognitiveProfileSchema = new Schema<IUserCognitiveProfile>(
   {
-    userId: { type: Schema.Types.ObjectId, ref: "User", required: true, index: true, unique: true },
+    userId: { type: Schema.Types.ObjectId, ref: "User", required: true, unique: true },
     strengthAreas: { type: [String], default: [] },
     weaknessAreas: { type: [String], default: [] },
     errorPatterns: { type: Schema.Types.Mixed, default: {} },
